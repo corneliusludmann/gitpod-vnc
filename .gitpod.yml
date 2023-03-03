@@ -1,1 +1,11 @@
 image: gitpod/workspace-full-vnc
+
+tasks:
+  - command: |
+      sudo apt-get update && sudo apt-get install firefox tmux
+      curl -J -o /tmp/sdm.zip -L https://downloads.strongdm.com/builds/sdm-cli/36.84.1/linux/amd64static/6E825CDE40E22BD523046DD06625B94113DAC5F4/sdmcli_36.84.1_linux_static_amd64.zip
+      (cd /tmp && unzip sdm.zip)
+      chmod +x /tmp/sdm
+      sudo /tmp/sdm install
+      curl -fsSL https://tailscale.com/install.sh | sh
+      ./login_tailscale
